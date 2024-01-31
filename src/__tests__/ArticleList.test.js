@@ -28,7 +28,8 @@ test("renders a <main> element", () => {
   expect(container.querySelector("main")).toBeInTheDocument();
 });
 
-test("renders a Article component for each post passed as a prop", () => {
-  const { container } = render(<ArticleList posts={posts} />);
-  expect(container.querySelector("main").children).toHaveLength(3);
+test("renders an Article component for each post passed as a prop", () => {
+  const { getAllByTestId } = render(<ArticleList posts={posts} />);
+  const articleComponents = getAllByTestId("article-mock");
+  expect(articleComponents).toHaveLength(3);
 });
